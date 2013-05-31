@@ -2,6 +2,8 @@
 
 namespace Hezten\CoreBundle\EntityManager;
 
+use Doctrine\ORM\EntityManager;
+
 use Hezten\CoreBundle\ModelManager\AcademicYearManagerInterface;
 
 

@@ -2,8 +2,10 @@
 
 namespace Hezten\CoreBundle\EntityManager;
 
-use Hezten\CoreBundle\ModelManager\CourseManagerInterface;
+use Doctrine\ORM\EntityManager;
 
+use Hezten\CoreBundle\ModelManager\CourseManagerInterface;
+use Hezten\CoreBundle\Model\AcademicYearInterface;
 
 /**
  * Default ORM CourseManager.
@@ -46,7 +48,7 @@ class CourseManager implements CourseManagerInterface
      * @param AcademicYear $academicYear of the courses to be shown, if none given current academic year is selected
      * @return A collection of Course
      */
-    public function getCoursesList(AcademicYear $academicYear=null) 
+    public function getCoursesList(AcademicYearInterface $academicYear=null) 
     {
         
         if($academicYear == null)
@@ -56,7 +58,7 @@ class CourseManager implements CourseManagerInterface
         
         $query = $this->em->createQuery(
                 "SELECT c, ac, cc, t
-                FROM AdminBundle:Course c JOIN c.academicYear ac JOIN c.category cc JOIN c.tutor t
+                FROM $this->class c JOIN c.academicYear ac JOIN c.category cc JOIN c.tutor t
                 WHERE $whereClause"
                 );
         
@@ -70,7 +72,8 @@ class CourseManager implements CourseManagerInterface
      * @return A collection of Subject
      */
     public function findSubjectsByCourse($courseId) 
-    {             
+    {   
+        throw new \Exception('Implementar findSubjectByCourse');          
         $query = $this->em->createQuery(
                 "SELECT s.id AS subjectId,s.name AS subjectName,c.id AS courseId, ay.id As academicYearId
                 FROM AdminBundle:Subject s JOIN s.course c JOIN c.academicYear ay
@@ -91,7 +94,7 @@ class CourseManager implements CourseManagerInterface
     * @param AcademicYear $academicYear of the courses to be shown, if none given current academic year is selected
     * @return A collection of Course
     */
-    public function findCourses($name = "", $orderBy = "ASC" , $page = 0, $limit = 30, AcademicYear $academicYear = null)
+    public function findCourses($name = "", $orderBy = "ASC" , $page = 0, $limit = 30, AcademicYearInterface $academicYear = null)
     {      
         if($academicYear == null)
             $whereClause = "AND ay.current = true";
@@ -101,7 +104,7 @@ class CourseManager implements CourseManagerInterface
         
         $query = $this->em->createQuery(
                 "SELECT c,t,cc, ay
-                FROM AdminBundle:Course c JOIN c.category cc JOIN c.tutor t JOIN c.academicYear ay
+                FROM $this->class c JOIN c.category cc JOIN c.tutor t JOIN c.academicYear ay
                 WHERE cc.levelShortName LIKE :name $whereClause
                 ORDER BY cc.levelShortName $orderBy, cc.year $orderBy, c.groupName $orderBy" 
         );

@@ -38,6 +38,7 @@ class Configuration implements ConfigurationInterface
                     ->end()
                 ->end()
                 ->arrayNode('manager')
+                    ->addDefaultsIfNotSet()
                     ->children()
                         ->scalarNode('academicyear')->defaultValue('hezten_core.manager.academicyear.default')->cannotBeEmpty()->end()
                         ->scalarNode('course')->defaultValue('hezten_core.manager.course.default')->cannotBeEmpty()->end()

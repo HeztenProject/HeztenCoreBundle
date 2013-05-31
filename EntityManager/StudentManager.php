@@ -2,7 +2,12 @@
 
 namespace Hezten\CoreBundle\EntityManager;
 
-use Hezten\CoreBundle\ModelManager\AcademicYearManagerInterface;
+use Doctrine\ORM\EntityManager;
+
+use Hezten\CoreBundle\ModelManager\StudentManagerInterface;
+use Hezten\CoreBundle\Model\CourseInterface;
+use Hezten\CoreBundle\Model\StudentInterface;
+use Hezten\CoreBundle\Model\AcademicYearInterface;
 
 
 /**
@@ -47,7 +52,7 @@ class StudentManager implements StudentManagerInterface
 	 * @param integer $amount The amount of students returned
 	 * @return Array of students
 	 */
-	public function findFilteredStudents($name,	$allStudents = false, AcademicYear $academicYear = null, $amount = 10)
+	public function findFilteredStudents($name,	$allStudents = false, AcademicYearInterface $academicYear = null, $amount = 10)
 	{
 		
 		$config = $this->em->getConfiguration();
@@ -83,7 +88,7 @@ class StudentManager implements StudentManagerInterface
 	 * @param AcademicYear $academicYear where the students is enroled, if none given current academic year is selected
 	 * @return Array of Enroled
 	 */
-	public function findEnroledSubjects(Student $student,AcademicYear $academicYear = null)
+	public function findEnroledSubjects(StudentInterface $student,AcademicYearInterface $academicYear = null)
 	{
 		if($academicYear == null)
 			$ayWhere = "ay.current = true";
@@ -106,7 +111,7 @@ class StudentManager implements StudentManagerInterface
 	 * @param Course $course The course
 	 * @return Array of Enroled
 	 */
-	public function findStudentsByCourse(Course $course)
+	public function findStudentsByCourse(CourseInterface $course)
 	{
 		$query = $em->createQuery(
 				"SELECT s.name, s.surname1, s.surname2, s.id

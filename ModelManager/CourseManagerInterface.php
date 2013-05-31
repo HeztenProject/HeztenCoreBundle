@@ -2,6 +2,7 @@
 
 namespace Hezten\CoreBundle\ModelManager;
 
+use Hezten\CoreBundle\Model\AcademicYearInterface;
 /**
  * Interface to be implemented by Course managers. This adds an additional level
  * of abstraction between your application, and the actual repository.
@@ -18,7 +19,7 @@ interface CourseManagerInterface
 	 * @param AcademicYear $academicYear of the courses to be shown, if none given current academic year is selected
 	 * @return A collection of Course
 	 */
-	public function getCoursesList(AcademicYear $academicYear=null);
+	public function getCoursesList(AcademicYearInterface $academicYear=null);
 	
 	/**
 	 * Returns a subject collection for the given course
@@ -37,4 +38,5 @@ interface CourseManagerInterface
 	* @param AcademicYear $academicYear of the courses to be shown, if none given current academic year is selected
 	* @return A collection of Course
 	*/
-	public function findCourses($name = "", $orderBy = "ASC" , $page = 0, $limit = 30, AcademicYear $academicYear = null);
+	public function findCourses($name = "", $orderBy = "ASC" , $page = 0, $limit = 30, AcademicYearInterface $academicYear = null);
+}

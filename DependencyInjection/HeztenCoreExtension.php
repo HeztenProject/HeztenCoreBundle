@@ -41,5 +41,10 @@ class HeztenCoreExtension extends Extension
         $container->setParameter('hezten_core.class.student', $classes['student']);
         $container->setParameter('hezten_core.class.studentparent', $classes['studentparent']);
         $container->setParameter('hezten_core.class.teacher', $classes['teacher']);
+
+        $managers = $config['manager'];
+        $container->setAlias('hezten_core.manager.academicyear', $managers['academicyear']);
+        $container->setAlias('hezten_core.manager.course', $managers['course']);
+        $container->setAlias('hezten_core.manager.student', $managers['student']);
     }
 }
