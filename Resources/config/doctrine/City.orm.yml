@@ -1,0 +1,13 @@
+Hezten\TimetableBundle\Entity\City:
+	type: mappedSuperclass
+    table: hezten_city
+    id: 
+        id:
+            type: integer
+            unique: true
+    fields:
+        name:
+            type: string
+            length: 20
+        state:
+            type: "Hezten/CoreBundle/Entity/State"

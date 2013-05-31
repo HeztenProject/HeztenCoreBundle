@@ -1,0 +1,17 @@
+Hezten\TimetableBundle\Entity\CourseCategory:
+	type: mappedSuperclass
+    table: hezten_coursecategory
+    id: 
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        levelName:
+            type: string
+            length: 45
+        levelShortName:
+            type: string
+            length: 5
+        level:
+            type: integer

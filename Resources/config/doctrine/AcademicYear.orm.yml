@@ -1,0 +1,18 @@
+Hezten\TimetableBundle\Entity\AcademicYear:
+	type: mappedSuperclass
+    table: hezten_academicyear
+    id: 
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        description:
+            type: string
+            length: 20
+        beginDate:
+            type: date
+        finishDate:
+            type: date
+        current:
+            type: boolean

@@ -1,0 +1,7 @@
+parameters:
+#    hezten_core.example.class: Hezten\CoreBundle\Example
+
+services:
+#    hezten_core.example:
+#        class: %hezten_core.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
