@@ -1,0 +1,15 @@
+Hezten\CoreBundle\Entity\Teacher:
+    type: mappedSuperclass
+    table: hezten_teacher
+    id: 
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 20
+        surname:
+            type: string
+            length: 20

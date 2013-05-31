@@ -1,5 +1,5 @@
-Hezten\TimetableBundle\Entity\City:
-	type: mappedSuperclass
+Hezten\CoreBundle\Entity\City:
+    type: mappedSuperclass
     table: hezten_city
     id: 
         id:
@@ -9,5 +9,3 @@ Hezten\TimetableBundle\Entity\City:
         name:
             type: string
             length: 20
-        state:
-            type: "Hezten/CoreBundle/Entity/State"

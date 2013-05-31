@@ -24,5 +24,22 @@ class HeztenCoreExtension extends Extension
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
+
+         if (!in_array(strtolower($config['db_driver']), array('orm'))) {
+            throw new \InvalidArgumentException(sprintf('Invalid db driver "%s".', $config['db_driver']));
+        }
+        $loader->load(sprintf('%s.yml', $config['db_driver']));
+
+        $classes = $config['class'];
+        $container->setParameter('hezten_core.class.academicyear', $classes['academicyear']);
+        $container->setParameter('hezten_core.class.city', $classes['city']);
+        $container->setParameter('hezten_core.class.course', $classes['course']);
+        $container->setParameter('hezten_core.class.coursecategory', $classes['coursecategory']);
+        $container->setParameter('hezten_core.class.enroled', $classes['enroled']);
+        $container->setParameter('hezten_core.class.parents', $classes['parents']);
+        $container->setParameter('hezten_core.class.state', $classes['state']);
+        $container->setParameter('hezten_core.class.student', $classes['student']);
+        $container->setParameter('hezten_core.class.studentparent', $classes['studentparent']);
+        $container->setParameter('hezten_core.class.teacher', $classes['teacher']);
     }
 }

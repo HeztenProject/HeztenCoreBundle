@@ -1,0 +1,12 @@
+Hezten\CoreBundle\Entity\State:
+    type: mappedSuperclass
+    table: hezten_state
+    id: 
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 20

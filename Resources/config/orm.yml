@@ -1,0 +1,12 @@
+services:
+    hezten_core.manager.academicyear.default:
+         class: "Hezten\TimetableBundle\EntityManager\AcademicYearManager"
+         arguments: [@doctrine.orm.entity_manager, %hezten_core.class.academicyear%]
+
+    hezten_core.manager.course.default:
+         class: "Hezten\TimetableBundle\EntityManager\CourseManager"
+         arguments: [@doctrine.orm.entity_manager, %hezten_core.class.course%]
+
+    hezten_core.manager.student.default:
+         class: "Hezten\TimetableBundle\EntityManager\StudentManager"
+         arguments: [@doctrine.orm.entity_manager, %hezten_core.class.student%]

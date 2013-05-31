@@ -1,5 +1,5 @@
-Hezten\TimetableBundle\Entity\AcademicYear:
-	type: mappedSuperclass
+Hezten\CoreBundle\Entity\AcademicYear:
+    type: mappedSuperclass
     table: hezten_academicyear
     id: 
         id:

@@ -1,0 +1,3 @@
+Hezten\CoreBundle\Entity\Enroled:
+    type: mappedSuperclass
+    table: hezten_enroled 

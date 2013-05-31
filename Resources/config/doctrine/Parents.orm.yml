@@ -1,0 +1,20 @@
+Hezten\CoreBundle\Entity\Parents:
+    type: mappedSuperclass
+    table: hezten_parents
+    id: 
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+        surname:
+            type: string
+        email:
+            type: email
+    OneToMany:
+        phones:
+            targetEntity: "ParentPhone"
+            mappedBy: parent
+            cascade: ["persist","remove"]

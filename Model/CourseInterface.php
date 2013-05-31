@@ -27,14 +27,14 @@ interface CourseInterface
     /**
      * Get category
      *
-     * @return \Hezten\CoreBundle\Entity\CourseCategory 
+     * @return \Hezten\CoreBundle\Model\CourseCategoryInterface 
      */
     public function getCategory();
 
     /**
      * Get academicYear
      *
-     * @return \Hezten\CoreBundle\Entity\AcademicYear 
+     * @return \Hezten\CoreBundle\Model\AcademicYearInterface
      */
     public function getAcademicYear();
 

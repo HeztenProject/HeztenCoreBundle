@@ -8,7 +8,7 @@ namespace Hezten\CoreBundle\Model;
 *	@author Gorka Lauzirika <gorka.lauzirika@gmail.com>
 */
 
-abstract class CorseCategory implements CourseCategoryInterface
+abstract class CourseCategory implements CourseCategoryInterface
 {
 	/**
 	* The id of the course category
@@ -128,9 +128,5 @@ abstract class CorseCategory implements CourseCategoryInterface
         return $this->level;
     }
     
-    /**
-    * Get a string representation of the object
-    * @return string
-    */
-    public function __toString();
+
 }

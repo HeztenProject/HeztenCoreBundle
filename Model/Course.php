@@ -2,6 +2,7 @@
 
 namespace Hezten\CoreBundle\Model;
 
+use Symfony\Component\Validator\Constraints as Assert;
 /**
 * 	Course model
 *
@@ -13,27 +14,27 @@ abstract class Course implements CourseInterface
 	/**
 	* The id of the course
 	*/
-	private $id;
+	protected $id;
 	
 	/**
 	 *  The category of the course (CourseCategory)
 	 *
 	 *	@Assert\NotBlank 
 	 */
-	private $category;
+	protected $category;
 	
 	/**
 	 *  The academic year of the course (AcademicYear)
 	 *
 	 *	@Assert\NotBlank 
 	 */
-	private $academicYear;
+	protected $academicYear;
 	
 	/**
 	 *  The teacher responsible of the group (Teacher)
 	 *	@Assert\NotBlank 
 	 */
-	private $tutor;
+	protected $tutor;
 	
 	/**
 	 *  The differentiation between courses in the same category. 
@@ -41,14 +42,20 @@ abstract class Course implements CourseInterface
 	 *
 	 *	@Assert\NotBlank 
 	 */
-	private $groupName;
+	protected $groupName;
 	
 	/**
 	*	The subjects of the course
 	*/
-	private $subjects;
+	protected $subjects;
 
-    
+     /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->subjects = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -86,10 +93,10 @@ abstract class Course implements CourseInterface
     /**
      * Set category
      *
-     * @param \Hezten\CoreBundle\Entity\CourseCategory $category
+     * @param \Hezten\CoreBundle\Model\CourseCategoryInterface $category
      * @return Course
      */
-    public function setCategory(\Hezten\CoreBundle\Entity\CourseCategory $category = null)
+    public function setCategory(\Hezten\CoreBundle\Model\CourseCategoryInterface $category = null)
     {
         $this->category = $category;
     
@@ -99,7 +106,7 @@ abstract class Course implements CourseInterface
     /**
      * Get category
      *
-     * @return \Hezten\CoreBundle\Entity\CourseCategory 
+     * @return \Hezten\CoreBundle\Model\CourseCategoryInterface 
      */
     public function getCategory()
     {
@@ -109,10 +116,10 @@ abstract class Course implements CourseInterface
     /**
      * Set academicYear
      *
-     * @param \Hezten\CoreBundle\Entity\AcademicYear $academicYear
+     * @param \Hezten\CoreBundle\Model\AcademicYearInterface $academicYear
      * @return Course
      */
-    public function setAcademicYear(\Hezten\CoreBundle\Entity\AcademicYear $academicYear = null)
+    public function setAcademicYear(\Hezten\CoreBundle\Model\AcademicYearInterface $academicYear = null)
     {
         $this->academicYear = $academicYear;
     
@@ -122,7 +129,7 @@ abstract class Course implements CourseInterface
     /**
      * Get academicYear
      *
-     * @return \Hezten\CoreBundle\Entity\AcademicYear 
+     * @return \Hezten\CoreBundle\Model\AcademicYearInterface 
      */
     public function getAcademicYear()
     {
@@ -132,10 +139,10 @@ abstract class Course implements CourseInterface
     /**
      * Set tutor
      *
-     * @param \Hezten\CoreBundle\Entity\Teacher $tutor
+     * @param \Hezten\CoreBundle\Model\TeacherInterface $tutor
      * @return Course
      */
-    public function setTutor(\Hezten\CoreBundle\Entity\Teacher $tutor = null)
+    public function setTutor(\Hezten\CoreBundle\Model\TeacherInterface $tutor = null)
     {
         $this->tutor = $tutor;
     
@@ -145,27 +152,20 @@ abstract class Course implements CourseInterface
     /**
      * Get tutor
      *
-     * @return \Hezten\CoreBundle\Entity\Teacher 
+     * @return \Hezten\CoreBundle\Model\TeacherInterface 
      */
     public function getTutor()
     {
         return $this->tutor;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->subjects = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-    
+       
     /**
      * Add subjects
      *
-     * @param \Hezten\CoreBundle\Entity\Subject $subjects
+     * @param \Hezten\CoreBundle\Model\SubjectInterface $subjects
      * @return Course
      */
-    public function addSubject(\Hezten\CoreBundle\Entity\Subject $subjects)
+    public function addSubject(\Hezten\CoreBundle\Model\SubjectInterface $subjects)
     {
         $this->subjects[] = $subjects;
     
@@ -175,9 +175,9 @@ abstract class Course implements CourseInterface
     /**
      * Remove subjects
      *
-     * @param \Hezten\CoreBundle\Entity\Subject $subjects
+     * @param \Hezten\CoreBundle\Model\SubjectInterface $subjects
      */
-    public function removeSubject(\Hezten\CoreBundle\Entity\Subject $subjects)
+    public function removeSubject(\Hezten\CoreBundle\Model\SubjectInterface $subjects)
     {
         $this->subjects->removeElement($subjects);
     }
@@ -191,6 +191,5 @@ abstract class Course implements CourseInterface
     {
         return $this->subjects;
     }
-    
-    public function _toString();
+
 }

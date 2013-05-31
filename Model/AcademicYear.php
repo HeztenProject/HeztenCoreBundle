@@ -137,8 +137,4 @@ abstract class AcademicYear implements AcademicYearInterface
         return $this->current;
     }
 
-    /**
-    * Get a string representation of the object
-    */
-    public function __toString();
 }

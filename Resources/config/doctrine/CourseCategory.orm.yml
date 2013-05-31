@@ -1,5 +1,5 @@
-Hezten\TimetableBundle\Entity\CourseCategory:
-	type: mappedSuperclass
+Hezten\CoreBundle\Entity\CourseCategory:
+    type: mappedSuperclass
     table: hezten_coursecategory
     id: 
         id:

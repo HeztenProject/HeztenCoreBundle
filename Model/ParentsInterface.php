@@ -3,12 +3,12 @@
 namespace Hezten\CoreBundle\Model;
 
 /**
-*   City model interface
+*   Parents model interface
 *
 *   @author Gorka Lauzirika <gorka.lauzirika@gmail.com>
 */
 
-interface CityInterface
+interface ParentsInterface
 {
     /**
      * Get id
@@ -25,12 +25,26 @@ interface CityInterface
     public function getName();
 
     /**
-     * Get state
+     * Get surname1
      *
-     * @return \Hezten\CoreBundle\Model\StateInterface 
+     * @return string 
      */
-    public function getState();
+    public function getSurname();
 
+    /**
+     * Get email
+     *
+     * @return string 
+     */
+    public function getEmail();
+
+    /**
+     * Get phones
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPhones();
+    
     /**
     * Get a string representation of the object
     * @return string

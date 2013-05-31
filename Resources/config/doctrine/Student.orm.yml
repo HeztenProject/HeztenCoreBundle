@@ -1,0 +1,27 @@
+Hezten\CoreBundle\Entity\Student:
+    type: mappedSuperclass
+    table: hezten_student
+    id: 
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 30
+        surname:
+            type: string
+            length: 30
+        birthDate:
+            type: date
+        gender:
+            type: string
+            length: 1
+        image:
+            type: string 
+            nullable: true
+
+    ManyToOne:
+        city:
+            targetEntity: City

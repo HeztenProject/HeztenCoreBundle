@@ -7,7 +7,7 @@ namespace Hezten\CoreBundle\Model;
 *
 *   @author Gorka Lauzirika <gorka.lauzirika@gmail.com>
 */
-abstract class City extends CityInterface
+abstract class City implements CityInterface
 {
     /**
     *   Postal code of the city
@@ -73,10 +73,10 @@ abstract class City extends CityInterface
     /**
      * Set province
      *
-     * @param \Hezten\CoreBundle\Entity\State  $state
+     * @param \Hezten\CoreBundle\Model\StateInterface  $state
      * @return City
      */
-    public function setState(\Hezten\CoreBundle\Entity\State  $state = null)
+    public function setState(\Hezten\CoreBundle\Model\StateInterface  $state = null)
     {
         $this->province = $province;
     
@@ -86,16 +86,11 @@ abstract class City extends CityInterface
     /**
      * Get province
      *
-     * @return \Hezten\CoreBundle\Entity\State 
+     * @return \Hezten\CoreBundle\Model\StateInterface 
      */
     public function getState()
     {
         return $this->state;
     }
     
-    /**
-    * Get a string representation of the object
-    * @return string
-    */
-    public function __toString();
 }

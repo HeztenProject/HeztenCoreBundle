@@ -1,0 +1,41 @@
+Hezten\CoreBundle\Entity\Subject:
+    type: mappedSuperclass
+    table: hezten_subject
+    id: 
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 40
+        shortName: 
+            type: string
+            length: 10
+        language:
+            type: string
+            length: 8
+        type:
+            type: integer
+
+    ManyToOne:
+        teacher:
+            targetEntity: Teacher
+            joinColumn:
+                name: teacher_id 
+                referencedColumnName: id
+                onDelete: set null
+        course:
+            targetEntity: Course
+            inversedBy: subjects
+
+    OneToMany:
+        enroled:
+            targetEntity: Enroled
+            mappedBy: subject
+            cascade: ["remove"]
+            joinColumn:
+                name: subject_id
+                referencedColumnName: id
+                onDelete: cascade

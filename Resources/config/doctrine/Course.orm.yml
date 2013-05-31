@@ -1,5 +1,5 @@
-Hezten\TimetableBundle\Entity\Course:
-	type: mappedSuperclass
+Hezten\CoreBundle\Entity\Course:
+    type: mappedSuperclass
     table: hezten_course
     id: 
         id:
@@ -10,19 +10,4 @@ Hezten\TimetableBundle\Entity\Course:
         groupName:
             type: string
             length: 2
-    manyToOne:
-        category:
-            targetEntity: "Hezten\CoreBundle\Entity\CourseCategory"
-        academicYear:
-            targetEntity: "Hezten\CoreBundle\Entity\AcademicYear"
-        tutor:
-            targetEntity: "Hezten\CoreBundle\Entity\Tutor"
-    oneToMany:
-        subjects:
-            targetEntity: "Hezten\CoreBundle\Entity\Subject"
-            mappedBy: course
-            cascade: ["remove"]
-            joinColumn:
-                name: "course_id"
-                referencedColumnName: "id"
-                onDelete: "cascade"
+    
