@@ -12,7 +12,9 @@ Hezten\CoreBundle\Entity\Parents:
         surname:
             type: string
         email:
-            type: email
+            type: string 
+            nullable: true 
+            unique: true
     OneToMany:
         phones:
             targetEntity: "ParentPhone"

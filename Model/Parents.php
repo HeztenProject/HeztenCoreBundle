@@ -2,12 +2,18 @@
 
 namespace Hezten\CoreBundle\Model;
 
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
+
 /**
 * 	Parent model
 *
 *	@author Gorka Lauzirika <gorka.lauzirika@gmail.com>
 */
 
+/**
+* @DoctrineAssert\UniqueEntity("email")
+*/
 abstract class Parents implements ParentsInterface
 {
 	/**
@@ -132,7 +138,7 @@ abstract class Parents implements ParentsInterface
      * @param \Hezten\CoreBundle\Entity\TutorPhone $phones
      * @return Tutor
      */
-    public function addPhone(\Hezten\CoreBundle\Entity\TutorPhone $phones)
+    public function addPhone(\Hezten\CoreBundle\Model\TutorPhoneInterface $phones)
     {
     	$phones->setTutor($this);
         $this->phones[] = $phones;
@@ -145,7 +151,7 @@ abstract class Parents implements ParentsInterface
      *
      * @param \Hezten\CoreBundle\Entity\TutorPhone $phones
      */
-    public function removePhone(\Hezten\CoreBundle\Entity\TutorPhone $phones)
+    public function removePhone(\Hezten\CoreBundle\Model\TutorPhoneInterface $phones)
     {
         $this->phones->removeElement($phones);
     }

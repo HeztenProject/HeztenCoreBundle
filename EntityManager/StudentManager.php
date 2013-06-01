@@ -70,7 +70,7 @@ class StudentManager implements StudentManagerInterface
 		$query = $this->em->createQuery(
 				"SELECT s,e,sb,c,cc, ay
 				FROM $this->class s LEFT JOIN s.enroled e LEFT JOIN e.subject sb LEFT JOIN sb.course c LEFT JOIN c.category cc LEFT JOIN c.academicYear ay
-				WHERE (CONCAT_WS(' ',s.name,s.surname1,s.surname2) LIKE :name OR CONCAT_WS('',cc.shortName,cc.year,c.groupName) LIKE :name) 
+				WHERE (CONCAT_WS(' ',s.name,s.surname) LIKE :name OR CONCAT_WS('',cc.levelShortName,cc.level,c.groupName) LIKE :name) 
 					". $ayWhere ."
 				GROUP BY s.id 
 				ORDER BY s.surname ASC, s.name ASC"
@@ -114,7 +114,7 @@ class StudentManager implements StudentManagerInterface
 	public function findStudentsByCourse(CourseInterface $course)
 	{
 		$query = $em->createQuery(
-				"SELECT s.name, s.surname1, s.surname2, s.id
+				"SELECT s.name, s.surname, s.id
 				FROM $this->class s JOIN s.enroled JOIN e.subject su JOIN su.course c 
 				WHERE c.id = :courseId
 				GROUP BY s.id"
