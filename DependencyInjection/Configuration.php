@@ -34,6 +34,7 @@ class Configuration implements ConfigurationInterface
                         ->scalarNode('state')->isRequired()->cannotBeEmpty()->end()
                         ->scalarNode('student')->isRequired()->cannotBeEmpty()->end()
                         ->scalarNode('studentparent')->isRequired()->cannotBeEmpty()->end()
+                        ->scalarNode('subject')->isRequired()->cannotBeEmpty()->end()
                         ->scalarNode('teacher')->isRequired()->cannotBeEmpty()->end()
                     ->end()
                 ->end()
@@ -43,6 +44,9 @@ class Configuration implements ConfigurationInterface
                         ->scalarNode('academicyear')->defaultValue('hezten_core.manager.academicyear.default')->cannotBeEmpty()->end()
                         ->scalarNode('course')->defaultValue('hezten_core.manager.course.default')->cannotBeEmpty()->end()
                         ->scalarNode('student')->defaultValue('hezten_core.manager.student.default')->cannotBeEmpty()->end()
+                        ->scalarNode('subject')->defaultValue('hezten_core.manager.subject.default')->cannotBeEmpty()->end()
+                        ->scalarNode('teacher')->defaultValue('hezten_core.manager.teacher.default')->cannotBeEmpty()->end()
+                        ->scalarNode('enroled')->defaultValue('hezten_core.manager.enroled.default')->cannotBeEmpty()->end()
                     ->end()
                 ->end()
             ->end();

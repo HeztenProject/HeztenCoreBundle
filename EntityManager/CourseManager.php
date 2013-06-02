@@ -6,7 +6,7 @@ use Doctrine\ORM\EntityManager;
 
 use Hezten\CoreBundle\ModelManager\CourseManagerInterface;
 use Hezten\CoreBundle\Model\AcademicYearInterface;
-
+use Hezten\CoreBundle\Model\TeacherInterface;
 /**
  * Default ORM CourseManager.
  *
@@ -66,26 +66,6 @@ class CourseManager implements CourseManagerInterface
     }
     
     /**
-     * Returns a subject collection for the given course
-     * 
-     * @param integer $courseId The course id
-     * @return A collection of Subject
-     */
-    public function findSubjectsByCourse($courseId) 
-    {   
-        throw new \Exception('Implementar findSubjectByCourse');          
-        $query = $this->em->createQuery(
-                "SELECT s.id AS subjectId,s.name AS subjectName,c.id AS courseId, ay.id As academicYearId
-                FROM AdminBundle:Subject s JOIN s.course c JOIN c.academicYear ay
-                WHERE c.id = :courseId"
-        );
-        
-        $query->setParameter('courseId', $courseId);
-        
-        return $query->getResult();
-    }
-    
-    /**
     * Find courses acording to the parameters given
     * @param string $name The name or part of the name of the course
     * @param string $orderBy (ASC or DESC) The ordering strategy
@@ -112,6 +92,30 @@ class CourseManager implements CourseManagerInterface
         $query->setParameter('name', "%$name%");
         $query->setFirstResult($page*$limit );
         $query->setMaxResults($limit);
+        
+        return $query->getResult();
+    }
+
+    /**
+    * Find the courses where the teacher is tutoring the group
+    * @param TeacherInterface $teacher The teacher
+    * @param AcademicYearInterface $academicYear of the courses to be shown, if none given current academic year is selected
+    * @return A collection of Course
+    */
+    public function findTutoringCourse(TeacherInterface $teacher, AcademicYearInterface $academicYear = null)
+    {        
+        if($academicYear == null)
+            $whereClause = "ac.current = true";
+        else
+            $whereClause = "ac.id = $academicYear";
+        
+        $query = $this->em->createQuery(
+                "SELECT c
+                FROM $this->class c JOIN c.academicYear ac 
+                WHERE c.tutor = :teacherId AND $whereClause "
+        ) ;
+        
+        $query->setParameter('teacherId', $teacher->getId());
         
         return $query->getResult();
     }

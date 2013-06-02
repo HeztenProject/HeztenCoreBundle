@@ -10,3 +10,15 @@ services:
     hezten_core.manager.student.default:
          class: "Hezten\CoreBundle\EntityManager\StudentManager"
          arguments: [@doctrine.orm.entity_manager, %hezten_core.class.student%]
+
+    hezten_core.manager.teacher.default:
+         class: "Hezten\CoreBundle\EntityManager\TeacherManager"
+         arguments: [@doctrine.orm.entity_manager, %hezten_core.class.teacher%]
+
+    hezten_core.manager.subject.default:
+         class: "Hezten\CoreBundle\EntityManager\SubjectManager"
+         arguments: [@doctrine.orm.entity_manager, %hezten_core.class.subject%]
+
+    hezten_core.manager.enroled.default:
+         class: "Hezten\CoreBundle\EntityManager\EnroledManager"
+         arguments: [@doctrine.orm.entity_manager, %hezten_core.class.enroled%]
