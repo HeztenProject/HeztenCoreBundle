@@ -47,6 +47,7 @@ class Configuration implements ConfigurationInterface
                         ->scalarNode('subject')->defaultValue('hezten_core.manager.subject.default')->cannotBeEmpty()->end()
                         ->scalarNode('teacher')->defaultValue('hezten_core.manager.teacher.default')->cannotBeEmpty()->end()
                         ->scalarNode('enroled')->defaultValue('hezten_core.manager.enroled.default')->cannotBeEmpty()->end()
+                        ->scalarNode('parents')->defaultValue('hezten_core.manager.parents.default')->cannotBeEmpty()->end()
                     ->end()
                 ->end()
             ->end();

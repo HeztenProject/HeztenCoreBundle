@@ -11,13 +11,6 @@ namespace Hezten\CoreBundle\Model;
 interface ParentsInterface
 {
     /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId();
-
-    /**
      * Get name
      *
      * @return string 
@@ -39,11 +32,18 @@ interface ParentsInterface
     public function getEmail();
 
     /**
+     * Get students
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getStudents();
+
+    /**
      * Get phones
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getPhones();
+    //public function getPhones();
     
     /**
     * Get a string representation of the object

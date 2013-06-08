@@ -15,8 +15,3 @@ Hezten\CoreBundle\Entity\Parents:
             type: string 
             nullable: true 
             unique: true
-    OneToMany:
-        phones:
-            targetEntity: "ParentPhone"
-            mappedBy: parent
-            cascade: ["persist","remove"]

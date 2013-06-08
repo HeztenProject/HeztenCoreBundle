@@ -47,7 +47,7 @@ class TeacherManager implements TeacherManagerInterface
 	
 	public function findFilteredTeachers($name, $amount = 10)
 	{
-		$config = $this->getEntityManager()->getConfiguration();
+		$config = $this->em->getConfiguration();
 		$config->addCustomNumericFunction('CONCAT_WS', 'DoctrineExtensions\Query\Mysql\ConcatWs');
 
 		$query = $this->em->createQuery(

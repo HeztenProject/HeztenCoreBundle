@@ -95,13 +95,13 @@ class StudentManager implements StudentManagerInterface
 		else 
 			$ayWhere = "ay.id = ". $academicYear->getId();
 		
-		$query = $em->createQuery(
+		$query = $this->em->createQuery(
 				"SELECT st, e, s, c, ay, cc
 				FROM $this->class st JOIN st.enroled e JOIN e.subject s JOIN s.course c JOIN c.academicYear ay JOIN c.category cc
-				WHERE st.student = :studentId AND " . $ayWhere
+				WHERE st.id = :studentId AND " . $ayWhere
 				);
 		
-		$query->setParameter('studentId',$student->getId());
+		$query->setParameter('studentId', $student->getId());
 		
 		return $query->getResult();
 	}
@@ -113,7 +113,7 @@ class StudentManager implements StudentManagerInterface
 	 */
 	public function findStudentsByCourse(CourseInterface $course)
 	{
-		$query = $em->createQuery(
+		$query = $this->em->createQuery(
 				"SELECT s.name, s.surname, s.id
 				FROM $this->class s JOIN s.enroled JOIN e.subject su JOIN su.course c 
 				WHERE c.id = :courseId

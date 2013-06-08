@@ -39,29 +39,22 @@ abstract class Parents implements ParentsInterface
      *	@Assert\Email 
      */
     protected $email;
+
+    protected $students;
     
     /** 
 	 * The phones of this parent (ParentPhone)	
      */
-    protected $phones;
+    //protected $phones;
     
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->phones = new \Doctrine\Common\Collections\ArrayCollection();
+        //$this->phones = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * Set name
@@ -130,17 +123,51 @@ abstract class Parents implements ParentsInterface
     public function getEmail()
     {
         return $this->email;
-    }    
+    }  
+
+    /**
+     * Add student
+     *
+     * @param \Hezten\CoreBundle\Model\StudentParentInterface $students
+     * @return Tutor
+     */
+    public function addStudentParent(\Hezten\CoreBundle\Model\StudentParentInterface $students)
+    {
+        $students->setParent($this);
+        $this->students[] = $students;
+    
+        return $this;
+    }
+
+    /**
+     * Remove students
+     *
+     * @param \Hezten\CoreBundle\Model\StudentParentInterface $students
+     */
+    public function removeStudentParent(\Hezten\CoreBundle\Model\StudentParentInterface $students)
+    {
+        $this->students->removeElement($students);
+    }
+
+    /**
+     * Get students
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getStudents()
+    {
+        return $this->students;
+    }  
     
     /**
      * Add phones
      *
-     * @param \Hezten\CoreBundle\Entity\TutorPhone $phones
+     * @param \Hezten\CoreBundle\Model\ParentsPhoneInterface $phones
      * @return Tutor
      */
-    public function addPhone(\Hezten\CoreBundle\Model\TutorPhoneInterface $phones)
+    public function addPhone(\Hezten\CoreBundle\Model\ParentsPhoneInterface $phones)
     {
-    	$phones->setTutor($this);
+    	$phones->setParent($this);
         $this->phones[] = $phones;
     
         return $this;
@@ -149,9 +176,9 @@ abstract class Parents implements ParentsInterface
     /**
      * Remove phones
      *
-     * @param \Hezten\CoreBundle\Entity\TutorPhone $phones
+     * @param \Hezten\CoreBundle\Model\ParentsPhoneInterface $phones
      */
-    public function removePhone(\Hezten\CoreBundle\Model\TutorPhoneInterface $phones)
+    public function removePhone(\Hezten\CoreBundle\Model\ParentsPhoneInterface $phones)
     {
         $this->phones->removeElement($phones);
     }

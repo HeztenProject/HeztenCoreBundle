@@ -1,0 +1,11 @@
+Hezten\CoreBundle\Entity\ParentsPhone:
+    type: mappedSuperclass
+    table: hezten_parentsPhone
+    id: 
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        number:
+            type: string

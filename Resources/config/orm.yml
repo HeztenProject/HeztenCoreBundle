@@ -22,3 +22,8 @@ services:
     hezten_core.manager.enroled.default:
          class: "Hezten\CoreBundle\EntityManager\EnroledManager"
          arguments: [@doctrine.orm.entity_manager, %hezten_core.class.enroled%]
+
+    hezten_core.manager.parents.default:
+         class: "Hezten\CoreBundle\EntityManager\\ParentsManager"
+         arguments: [@doctrine.orm.entity_manager, %hezten_core.class.parents%]
+   

@@ -17,15 +17,6 @@ abstract class Teacher implements TeacherInterface
 	protected $surname;
 
 	/**
-	 * Get id
-	 *
-	 * @return integer 
-	 */
-	public function getId() {
-		return $this->id;
-	}
-
-	/**
 	 * Set name
 	 *
 	 * @param string $name

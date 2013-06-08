@@ -11,13 +11,6 @@ namespace Hezten\CoreBundle\Model;
 interface TeacherInterface
 {
 	/**
-	 * Get id
-	 *
-	 * @return integer 
-	 */
-	public function getId();
-
-	/**
 	 * Get name
 	 *
 	 * @return string 

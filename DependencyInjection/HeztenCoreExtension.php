@@ -40,7 +40,7 @@ class HeztenCoreExtension extends Extension
         $container->setParameter('hezten_core.class.state', $classes['state']);
         $container->setParameter('hezten_core.class.student', $classes['student']);
         $container->setParameter('hezten_core.class.studentparent', $classes['studentparent']);
-         $container->setParameter('hezten_core.class.subject', $classes['subject']);
+        $container->setParameter('hezten_core.class.subject', $classes['subject']);
         $container->setParameter('hezten_core.class.teacher', $classes['teacher']);
 
         $managers = $config['manager'];
@@ -50,5 +50,6 @@ class HeztenCoreExtension extends Extension
         $container->setAlias('hezten_core.manager.subject', $managers['subject']);
         $container->setAlias('hezten_core.manager.teacher', $managers['teacher']);
         $container->setAlias('hezten_core.manager.enroled', $managers['enroled']);
+        $container->setAlias('hezten_core.manager.parents', $managers['parents']);
     }
 }
